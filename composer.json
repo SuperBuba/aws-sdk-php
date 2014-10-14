@@ -1,6 +1,6 @@
 {
     "name": "aws/aws-sdk-php",
-    "homepage": "http://aws.amazon.com/sdkforphp",
+    "homepage": "http://aws.amazon.com/sdkforphp_test",
     "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project",
     "keywords": ["aws","amazon","sdk","s3","ec2","dynamodb","cloud","glacier"],
     "type": "library",
