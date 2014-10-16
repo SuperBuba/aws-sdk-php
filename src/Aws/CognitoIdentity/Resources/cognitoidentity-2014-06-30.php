@@ -359,6 +359,89 @@ return array (
                 ),
             ),
         ),
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        'GetOpenIdTokenForDeveloperIdentity' => array(
+            'httpMethod' => 'POST',
+            'uri' => '/',
+            'class' => 'Aws\\Common\\Command\\JsonCommand',
+            'responseClass' => 'GetOpenIdTokenResponse',
+            'responseType' => 'model',
+            'parameters' => array(
+                'Content-Type' => array(
+                    'static' => true,
+                    'location' => 'header',
+                    'default' => 'application/x-amz-json-1.1',
+                ),
+                'command.expects' => array(
+                    'static' => true,
+                    'default' => 'application/json',
+                ),
+                'X-Amz-Target' => array(
+                    'static' => true,
+                    'location' => 'header',
+                    'default' => 'AWSCognitoIdentityService.GetOpenIdTokenForDeveloperIdentity',
+                ),
+                // 'IdentityId' => array(
+                //     'required' => true,
+                //     'type' => 'string',
+                //     'location' => 'json',
+                //     'minLength' => 1,
+                //     'maxLength' => 50,
+                // ),
+                'IdentityPoolId' => array(
+                    'required' => true,
+                    'type' => 'string',
+                    'location' => 'json',
+                    'minLength' => 1,
+                    'maxLength' => 50,
+                ),
+                'Logins' => array(
+                    'type' => 'object',
+                    'location' => 'json',
+                    'additionalProperties' => array(
+                        'type' => 'string',
+                        'minLength' => 1,
+                        'maxLength' => 1024,
+                        'data' => array(
+                            'shape_name' => 'IdentityProviderName',
+                            'key_pattern' => '/[\\w._-]+/',
+                        ),
+                    ),
+                ),
+            ),
+            'errorResponses' => array(
+                array(
+                    'reason' => 'Thrown for missing or bad input parameter(s).',
+                    'class' => 'InvalidParameterException',
+                ),
+                array(
+                    'reason' => 'Thrown when the requested resource (for example, a dataset or record) does not exist.',
+                    'class' => 'ResourceNotFoundException',
+                ),
+                array(
+                    'reason' => 'Thrown when a user is not authorized to access the requested resource.',
+                    'class' => 'NotAuthorizedException',
+                ),
+                array(
+                    'reason' => 'Thrown when a user tries to use a login which is already linked to another account.',
+                    'class' => 'ResourceConflictException',
+                ),
+                array(
+                    'reason' => 'Thrown when a request is throttled.',
+                    'class' => 'TooManyRequestsException',
+                ),
+                array(
+                    'reason' => 'Thrown when the service encounters an error during processing the request.',
+                    'class' => 'InternalErrorException',
+                ),
+            ),
+        ),
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
         'ListIdentities' => array(
             'httpMethod' => 'POST',
             'uri' => '/',
